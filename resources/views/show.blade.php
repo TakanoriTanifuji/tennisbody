@@ -7,22 +7,25 @@
             <div class="card">
                 <div class="card-header">{{ __('Player Info') }}</div>
 
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <button type="button" name="button" class="btn btn-secondary float-right mb-2"><a href="/" class= "text-white">Bo Back</a></button>
                     <h3>Player Profile</h3>
 
 
-                        <div class="card m-2">
-                          <h5>Name: {{$player->name}}</h5>
-                          <h5>Gender: {{$player->gender}}</h5>
-                          <h5>Level: {{$player->level}}</h5>
-                          <h5>Age: {{$player->age}}</h5>
-                          <h5>Location: {{$player->location}}</h5>
+                        <div class="card m-4">
+                          <div class="m-2">
+                            <h5>Name: {{$player->name}}</h5>
+                            <h5>Gender: {{$player->gender}}</h5>
+                            <h5>Level: {{$player->level}}</h5>
+                            <h5>Age: {{$player->age}}</h5>
+                            <h5>Location: {{$player->location}}</h5>
+                          </div>
 
                           @if(Auth::check())
                             <button class="btn btn-primary" ><a href="mailto:{{Auth::user()->email}}" class='text-white'>Send Email</a></button>
@@ -37,8 +40,7 @@
                             </script>
                           @endif
 
-                    </div>
-
+                        </div>
                 </div>
             </div>
         </div>

@@ -44,9 +44,14 @@ class PlayerController extends Controller
     public function search(Request $request)
     {
 
-        $search = $request->get('search');
-        $players = DB::table('players')->where('location', 'like', '%'.$search.'%');
+        $search = $request->input('location');
+
+
+        $players = DB::table('players')->where('location', 'like', '%'.$search.'%')
+
+
         $players = $players->get();
+
         return view('index', ['players' => $players]);
     }
 

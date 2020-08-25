@@ -10,13 +10,38 @@
 <!-- search input  -->
 <form action="/search" method="get">
   {{ csrf_field() }}
-    <div class="input-group m-2 w-50 mx-auto mb-5">
-        <input type="text" class="form-control" name="search" placeholder="Search location">
+    <div class="m-5 w-50 mx-auto mb-5">
+        <label for="exampleFormControlSelect1" name="level">Location</label>
+        <input type="text" class="form-control mb-3" id="address-input" name="location" placeholder="Enter location">
+        <script src="https://cdn.jsdelivr.net/places.js/1/places.min.js"></script>
+        <script>
+          var placesAutocomplete = places({
+            container: document.querySelector('#address-input')
+          });
+        </script>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1" >Level</label>
+          <select class="form-control mb-3" name="level">
+            <option>1.0</option>
+            <option>2.0</option>
+            <option>3.0</option>
+            <option>4.0</option>
+            <option>5.0</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1" >Gender</label>
+          <select class="form-control mb-3" name="gender">
+            <option>Female</option>
+            <option>Male</option>
+          </select>
+        </div>
           <div class="input-group-append">
             <button type="submit" class="btn btn-primary">Search</button>
           </div>
     </div>
 </form>
+
 
 
   @foreach($players as $player)
