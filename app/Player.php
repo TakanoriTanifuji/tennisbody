@@ -10,7 +10,6 @@ class Player extends Model
    use Searchable;
 
     
-
     public function user()
     {
       return $this->belongsTo('App\User');
