@@ -23,7 +23,7 @@ class PlayerController extends Controller
 
     public function index()
     {
-        $players = Player::get();
+        $players = Player::paginate(15);
 
         return view('index')->with('players', $players);
     }
@@ -49,13 +49,30 @@ class PlayerController extends Controller
         $gender = $request->input('gender');
 
 
-        $players = DB::table('players')->where('location', 'like', '%'.$location.'%')
-                                       ->where('level', 'like', '%'.$level.'%')
-                                       ->where('gender', 'like', '%'.$gender.'%');
+        // $players = Player::where([
+        //                 ['level', '=', $level],
+        //                 ['location', 'like', '%'.$location.'%'],
+        //                 ['gender', '=', $gender]])->paginate(15);
 
-        $players=$players->get();
+        $players = Player::query();
 
-        return view('index', compact('players'));
+        if(!empty($level))
+        {
+          $players = $players->where('level', '=', $level);
+        }
+
+        if(!empty($location))
+        {
+          $players = $players->where('location', 'like', '%'.$location.'%');
+        }
+
+        if(!empty($gender))
+        {
+          $players = $players->where('gender', '=', $gender);
+        }
+
+        $players=$players->paginate(15);
+        return view('index')->with(compact('players', 'location', 'level', 'gender'));
     }
 
     /**
