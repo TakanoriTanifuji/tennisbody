@@ -2,17 +2,25 @@
 
 
 
-@section('sidebar')
 
-<div class="container-fluid mt-5">
-    <div class="row ">
-        <div class="col-3 px-1 bg-dark position-fixed h-100" id="sticky-sidebar">
 
-            <!-- search input  -->
-            <form action="/search" method="get">
+@section('content')
+
+
+<div class="tennis">
+  <div class="text-center m-5 pt-5">
+
+    <h1 class="font-weight-bold">Find your tennis partner</h1>
+  </div>
+
+            <form action="/search" method="get" >
               {{ csrf_field() }}
-                <div class="m-5 w-75 mx-auto mb-5">
-                    <input type="text" class="form-control" id="address-input" name="location" placeholder="Enter location" value="{{ $location ?? '' }}">
+
+
+                <div class="container m-2 w-50 mx-auto">
+                      <div class="mt-3">
+
+                    <input type="text" class="form-control " id="address-input" name="location" placeholder="Enter location" value="{{ $location ?? '' }}">
                     <script src="https://cdn.jsdelivr.net/npm/places.js@1.19.0"></script>
                     <script>
                       var placesAutocomplete = places({
@@ -27,6 +35,7 @@
                             aroundLatLngViaIP: false,
                           });
                     </script>
+                    </div>
 
                     <div class="form-group mt-3">
                       <select class="form-control " name="level">
@@ -43,6 +52,7 @@
                       </select>
                     </div>
 
+
                     <div class="form-group">
                       <select class="form-control " name="gender">
                         <option disabled selected value> select a gender </option>
@@ -53,39 +63,36 @@
                       </select>
                     </div>
 
-                      <div class="input-group-append my-3">
-                        <button type="submit" class="btn btn-primary">Search</button>
+                    <div class="d-flex">
+                      <div class="input-group-append my-3 pb-3 align-self-end ml-auto">
+                        <button type="submit" class="btn btn-primary pull-right">Search</button>
                       </div>
-                </div>
+                      </div>
+                    </div>
+
+                  </div>
+
             </form>
 
 
-        </div>
-    </div>
-
-</div>
-
-
-@endsection
 
 
 
-@section('content')
 
 
 
-<div class="text-center m-5">
-<h1>Looking for tennis partner?</h1>
-</div>
 
 
-
-  @foreach($players as $player)
+ @foreach($players as $player)
   <div class="card m-2 w-50 mx-auto">
     <div class="m-3">
       <h5><a href="/players/{{$player->id}}">{{$player->name}}</a></h5>
-      <p>Gender: {{$player->gender}}    Level: {{$player->level}}    Age: {{$player->age}}</p>
-      <p>Location: {{$player->location}}</p>
+      <dl>
+        <dt>Gender: {{$player->gender}} </dt>
+        <dt>Level: {{$player->level}} </dt>
+        <dt>Age: {{$player->age}}</dt>
+        <dt>Location: {{$player->location}}</dt>
+      </dl>
     </div>
   </div>
 

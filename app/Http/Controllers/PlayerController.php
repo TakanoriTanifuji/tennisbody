@@ -159,7 +159,7 @@ class PlayerController extends Controller
       $player->location = $request->input('location');
       $player->save();
 
-      return redirect('/');
+      return redirect('/home');
     }
 
     /**

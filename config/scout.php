@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'queue' => env('SCOUT_QUEUE', true),
+    'queue' => env('SCOUT_QUEUE', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -98,9 +98,9 @@ return [
     |
     */
 
-    'algolia' => [
-        'id' => env('WLUF0VXBNV', ''),
-        'secret' => env('9cbfd41bf33662f69e2596238828d4f3', ''),
-    ],
+    // 'algolia' => [
+    //     'id' => env('WLUF0VXBNV'),
+    //     'secret' => env('9cbfd41bf33662f69e2596238828d4f3'),
+    //],
 
 ];
