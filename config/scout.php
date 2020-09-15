@@ -99,8 +99,8 @@ return [
     */
 
     'algolia' => [
-        'id' => env('WLUF0VXBNV'),
-        'secret' => env('9cbfd41bf33662f69e2596238828d4f3'),
+        'id' => env('WLUF0VXBNV', ''),
+        'secret' => env('9cbfd41bf33662f69e2596238828d4f3','')
     ],
 
 ];
