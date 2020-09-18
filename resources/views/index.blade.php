@@ -26,6 +26,7 @@
                       var placesAutocomplete = places({
                         container: document.querySelector('#address-input'),
                         templates: {
+
                               value: function(suggestion) {
                                 return suggestion.name;
                               }

@@ -61,17 +61,19 @@ class PlayerController extends Controller
           $players = $players->where('level', '=', $level);
         }
 
-        if(!empty($location))
-        {
-          $players = $players->where('location', 'like', '%'.$location.'%');
-        }
-
         if(!empty($gender))
         {
           $players = $players->where('gender', '=', $gender);
         }
 
-        $players=$players->paginate(15);
+        if(!empty($location))
+        {
+          $players = $players->where('location', 'like', '%'.$location.'%');
+        }
+
+
+
+        $players=$players->paginate(5);
         return view('index')->with(compact('players', 'location', 'level', 'gender'));
     }
 
