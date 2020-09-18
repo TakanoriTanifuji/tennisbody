@@ -73,7 +73,7 @@ class PlayerController extends Controller
 
 
 
-        $players=$players->paginate(15);
+        $players=$players->paginate(5);
         return view('index')->with(compact('players', 'location', 'level', 'gender'));
     }
 
